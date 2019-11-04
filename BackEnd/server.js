@@ -89,6 +89,17 @@ app.get('/api/movies/:id',(req,res)=>{
   })
 })
 
+app.delete('/api/movies/:id', (req,res) =>{
+  console.log(req.params.id);
+
+  MovieModel.deleteOne({_id:req.params.id},(error,data)=>{
+    if(error)
+    res.json(error);
+
+    res.json(data);
+  })
+})
+
 app.listen(PORT, function () {
   console.log('Server is running on Port: ', PORT);
 });
